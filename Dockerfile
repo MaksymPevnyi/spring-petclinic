@@ -7,9 +7,7 @@ FROM maven:3.6.3-openjdk-11 as build
 # USER java
 WORKDIR /app
 # TODO: ideally we're copying in xml only and installing dependencies first
-COPY ./spring-petclinic-client/pom.xml ./spring-petclinic-client/
 COPY pom.xml .
-COPY ./spring-petclinic-server/pom.xml ./spring-petclinic-server/
 # install maven dependency packages, this takes about a minute
 RUN mvn dependency:go-offline
 # Then we copy in all source and build
