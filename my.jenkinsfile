@@ -3,15 +3,14 @@ pipeline {
      options {
      buildDiscarder(logRotator(numToKeepStr: '5'))
      }   
- 
+    tools {
+         maven '3.6.3'
+    } 
     stages {
         stage('Build') {
             steps {
                 sh 'mvn -f clean package'
             }
-        }
-        tools {
-            maven '3.6.3'
         }
         stage('Test') {
             steps {
