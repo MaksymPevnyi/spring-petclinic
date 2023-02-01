@@ -10,6 +10,9 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        tools {
+            maven '3.8.6'
+        }
         stage('Test') {
             steps {
                 sh 'docker image build -f ./Dockerfile .'
