@@ -13,14 +13,8 @@ pipeline {
         stage('Queality check') {
             steps {
                 script {
-                withSonarQubeEnv('sonarserver') {
-                sh 'mvn sonar:sonar'
-                            }
-               
-                    sh "mvn clean install"
-                    }
-                    }
-                  }
+                    withSonarQubeEnv(instalattionName: 'sq1') {
+                    sh '.mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin
                
         stage('Test') {
             steps {
