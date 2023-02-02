@@ -10,10 +10,10 @@ pipeline {
             }
         }
         stage('Queality check') {
-            def mvnHome = tool name: 'Apache Maven 3.6.3', type: 'maven'
             steps {
                 script {
                     withSonarQubeEnv(instalattionName: 'sq1') {
+                    def mvnHome = tool name: 'Apache Maven 3.6.3', type: 'maven'
                     sh '.mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
                     }
                  }
