@@ -3,9 +3,6 @@ pipeline {
      options {
      buildDiscarder(logRotator(numToKeepStr: '5'))
      }
-     tools {
-     maven 'M3'
-     }
     stages {
         stage('Build') {
             steps {
@@ -13,6 +10,7 @@ pipeline {
             }
         }
         stage('Queality check') {
+            def mvnHome = tool name: 'Apache Maven 3.6.3', type: 'maven'
             steps {
                 script {
                     withSonarQubeEnv(instalattionName: 'sq1') {
