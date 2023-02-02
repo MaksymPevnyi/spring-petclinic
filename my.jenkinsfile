@@ -10,6 +10,13 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Scan') {
+            steps {
+                withSonarQubeEnv (installationName: 'sq1') {
+                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.8.0.2856:sonar'
+                    }
+                }
+            }
         stage('Test') {
             steps {
                 sh 'docker image build -f ./Dockerfile .'
